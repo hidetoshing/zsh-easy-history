@@ -19,7 +19,7 @@ HISTSIZE=100000
 SAVEHIST=$HISTSIZE
 
 function history-select() {
-    BUFFER=`history -n 1 | fzy`
+    BUFFER=`history -n 1 | fzf`
     CURSOR=$#BUFFER
     zle reset-prompt
 }
