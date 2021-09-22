@@ -14,15 +14,15 @@ setopt HIST_IGNORE_SPACE
 setopt share_history        # share command history data
 setopt inc_append_history
 
-HISTFILE=${HOME}/.zsh_history
+HISTFILE=${XDG_CONFIG_HOME:-$HOME/.confg}/zsh/history
 HISTSIZE=100000
 SAVEHIST=$HISTSIZE
 
 function history-select() {
-    BUFFER=`history -n 1 | fzf`
+    BUFFER=`history -n 1 | fzf-tmux -p`
     CURSOR=$#BUFFER
     zle reset-prompt
 }
 
 zle -N history-select
-bindkey "^@" history-select
+bindkey "^r" history-select
